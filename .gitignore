@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Clangd cache
+.cache
+
+# jetbrains
+.ieda
+cmake-*
+
+# vscode
+.vscode
