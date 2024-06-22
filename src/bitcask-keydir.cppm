@@ -1,30 +1,21 @@
-#include <memory>
 module;
+
 
 #include <string>
 #include <vector>
 #include <cstdint>
 #include <optional>
+#include <memory>
 
 
 export module bitcask:keydir;
 
+import :byte;
+
 namespace bitcask {
 
 
-export class Byte {
-public:
-    auto FromString(const std::string& key) {
-        data.clear();
-        data.resize(key.size());
-        std::copy(key.begin(), key.end(), data.begin());
-    };
-    
-private:
-    std::vector<uint8_t> data;
-};
-
-enum class LogRecordType {
+export enum class LogRecordType {
     kNormal,
     kDeleted
 };
@@ -47,7 +38,7 @@ private:
 
 
 // KeyDir's container interface
-export class KeyDirContainer {
+class KeyContainer {
 public:    
     virtual auto Get(const Byte& key) -> std::optional<LogRecordPos>;
     virtual auto Put(const Byte& key, const LogRecordPos& pos) -> bool;
@@ -60,8 +51,8 @@ export class KeyDir {
 public:
     KeyDir(){}
 private:
-    // container interface
-    std::unique_ptr<KeyDirContainer> container;
+    // container interface;
+    std::unique_ptr<KeyContainer> container;
 };
 
 }
