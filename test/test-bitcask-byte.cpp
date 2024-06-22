@@ -5,17 +5,24 @@ import bitcask;
 
 TEST(UnitTest, ByteForRange) {
     auto str = std::string("test byte");    
-    auto data = bitcask::Byte::FromString(str);
+    auto data1 = bitcask::Byte::FromString(str);
 
     int i = 0;
-    for(auto it: data){
+    for(auto it: data1){
         ASSERT_EQ(static_cast<uint8_t>(str[i]), it);
         i++;
     }
 
     for(i = 0; i < static_cast<int>(str.size()); i++){
-        ASSERT_EQ(static_cast<uint8_t>(str[i]), data[i]);
-    }    
+        ASSERT_EQ(static_cast<uint8_t>(str[i]), data1[i]);
+    }  
+
+    i = 0;
+    const auto data2 = bitcask::Byte::FromString(str);
+    for(auto it: data2){
+        ASSERT_EQ(static_cast<uint8_t>(str[i]), it);
+        i++;
+    }  
 }
 
 TEST(UnitTest, ByteCopy) {

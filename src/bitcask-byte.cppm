@@ -19,10 +19,19 @@ public:
     };
 
     using iterator = std::vector<uint8_t>::iterator;
-    iterator begin() {
+    
+    auto begin() -> iterator {
         return data_.begin();
     }
-    iterator end() {
+    auto end() -> iterator {
+        return data_.end();
+    }
+
+    using const_iterator = std::vector<uint8_t>::const_iterator;
+    auto begin() const -> const_iterator {
+        return data_.begin();
+    }
+    auto end() const -> const_iterator {
         return data_.end();
     }
 
