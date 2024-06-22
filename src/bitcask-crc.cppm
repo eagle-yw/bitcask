@@ -20,7 +20,11 @@ public:
     }
 
     auto GetCRC32(const Byte& data) const -> uint32_t {
-        return 0;
+        auto crc = uint32_t(0xFFFFFFFF);
+        for(const auto it: data){
+            crc = table_32_[(crc^it)&0xFF] ^ (crc >> 8);
+        }
+        return crc ^ uint32_t(0xFFFFFFFF);
     }
 private:
     CRC32(){
