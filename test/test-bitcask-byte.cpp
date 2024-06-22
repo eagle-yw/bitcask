@@ -3,7 +3,7 @@
 
 import bitcask;
 
-TEST(ByteForRange, UnitTest) {
+TEST(UnitTest, ByteForRange) {
     auto str = std::string("test byte");    
     auto data = bitcask::Byte::FromString(str);
 
@@ -18,7 +18,7 @@ TEST(ByteForRange, UnitTest) {
     }    
 }
 
-TEST(ByteCopy, UnitTest) {
+TEST(UnitTest, ByteCopy) {
     auto str = std::string("test byte");     
     auto data = bitcask::Byte::FromString(str);
     //copy
@@ -38,7 +38,7 @@ TEST(ByteCopy, UnitTest) {
     }    
 }
 
-TEST(ByteMove, UnitTest) {
+TEST(UnitTest, ByteMove) {
     auto str = std::string("test byte");   
     auto data = bitcask::Byte::FromString(str);
     auto data1 = std::move(data);
@@ -53,7 +53,7 @@ TEST(ByteMove, UnitTest) {
  
 }
 
-TEST(ByteCompare, UnitTest) {
+TEST(UnitTest, ByteCompare) {
     auto str1 = std::string("test byte1");
     auto str2 = std::string("test byte2");     
     //copy
